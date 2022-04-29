@@ -1,0 +1,47 @@
+body {
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    transition: .5s;
+    background-color: white;
+}
+
+.div-cta {
+    position: absolute;
+    margin: auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 64px;
+    height: 32px;
+}
+
+#cta {
+    border-radius: 8px;
+    height: 32px;
+    width: 64px;
+    text-align: center;
+    border: 1px;
+    border-color: white;
+    background-color: rgba(255, 255, 255, 0.3);
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+    font-family: helvetica;
+    font-weight: bold;
+    font-size: 15px;
+    text-shadow: 0px 1px 5px rgba(0, 0, 0, 0.3);
+    color: white;
+    transition: .5s;
+}
+
+#cta:hover {
+    transition: .5s;
+    box-shadow: 0px 8px 22px rgba(0, 0, 0, 0.4);
+}
+
+#cta:active {
+    background-color: rgba(255, 255, 255);
+    color: black;
+    text-shadow: 0px 0px 0px;
+
+}

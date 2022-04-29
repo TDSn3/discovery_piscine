@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Over 9000</title>
+        <style>
+
+        </style>
+	</head>
+
+	<body>
+        <input type="text" id="Lvaleur" value="">
+        <select id="sel">
+            <option value="+">+</option>
+            <option value="-">-</option>
+            <option value="*">*</option>
+            <option value="/">/</option>
+            <option value="%">%</option>
+        </select>
+        <input type="texte" id="Rvaleur" value="">
+        <input type="submit" value="Try me !" id="bouton">
+
+        <script type="text/javascript">
+            var Lvaleur = document.getElementById("Lvaleur");
+            var Rvaleur = document.getElementById("Rvaleur");
+            var Selecteur = document.getElementById('sel');
+            var bouton = document.getElementById("bouton");
+
+            bouton.addEventListener('click', function() {
+                console.log("Left = "+Lvaleur.value+", "+Selecteur.value+", Right = "+Rvaleur.value);
+                if (parseInt(Lvaleur.value) >= 0 )
+                {
+                    console.log("OUI");
+                }
+            })
+        </script>
+    </body>
+</html>
