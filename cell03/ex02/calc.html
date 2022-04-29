@@ -26,13 +26,84 @@
             var Rvaleur = document.getElementById("Rvaleur");
             var Selecteur = document.getElementById('sel');
             var bouton = document.getElementById("bouton");
+            var i = 0;
+            var tryMeL = 0;
+            var tryMeR = 0;
+
+            setInterval("alert('Use me please ...')", 30000);
 
             bouton.addEventListener('click', function() {
                 console.log("Left = "+Lvaleur.value+", "+Selecteur.value+", Right = "+Rvaleur.value);
-                if (parseInt(Lvaleur.value) >= 0 )
+                while (Lvaleur.value[i])
                 {
-                    console.log("OUI");
+                    if (Lvaleur.value[i] != 0 && Lvaleur.value[i] != 1 && Lvaleur.value[i] != 2 && Lvaleur.value[i] != 3 && Lvaleur.value[i] != 4 && Lvaleur.value[i] != 5 && Lvaleur.value[i] != 6 && Lvaleur.value[i] != 7 && Lvaleur.value[i] != 8 && Lvaleur.value[i] != 9)
+                    {
+                        console.log('Other character than 0123456789 detected in left');
+                        tryMeL = 0;
+                        break;
+                    }
+                    tryMeL = 1;
+                    i++;
                 }
+                i = 0;
+
+                while (Rvaleur.value[i])
+                {
+                    if (Rvaleur.value[i] != 0 && Rvaleur.value[i] != 1 && Rvaleur.value[i] != 2 && Rvaleur.value[i] != 3 && Rvaleur.value[i] != 4 && Rvaleur.value[i] != 5 && Rvaleur.value[i] != 6 && Rvaleur.value[i] != 7 && Rvaleur.value[i] != 8 && Rvaleur.value[i] != 9)
+                    {
+                        console.log('Other character than 0123456789 detected in right');
+                        tryMeR = 0;
+                        break;
+                    }
+                    tryMeR = 1;
+                    i++;
+                }
+                i = 0;
+
+                if (tryMeL + tryMeR == 2 && Selecteur.value == '+')
+                {
+                    console.log(parseInt(Lvaleur.value)+parseInt(Rvaleur.value));
+                    alert(parseInt(Lvaleur.value)+parseInt(Rvaleur.value));
+                }
+                else if (tryMeL + tryMeR == 2 && Selecteur.value == '-')
+                {
+                    console.log(parseInt(Lvaleur.value)-parseInt(Rvaleur.value));
+                    alert(parseInt(Lvaleur.value)-parseInt(Rvaleur.value));
+                }
+                else if (tryMeL + tryMeR == 2 && Selecteur.value == '*')
+                {
+                    console.log(parseInt(Lvaleur.value)*parseInt(Rvaleur.value));
+                    alert(parseInt(Lvaleur.value)*parseInt(Rvaleur.value));
+                }
+                else if (tryMeL + tryMeR == 2 && Selecteur.value == '/')
+                {
+                    if (Rvaleur.value == 0)
+                    {
+                        console.log("It’s over 9000!");
+                        alert("It’s over 9000!");
+                    }
+                    else
+                    {
+                        console.log(parseInt(Lvaleur.value)/parseInt(Rvaleur.value));
+                        alert(parseInt(Lvaleur.value)/parseInt(Rvaleur.value));
+                    }
+                }
+                else if (tryMeL + tryMeR == 2 && Selecteur.value == '%')
+                {
+                    if (Rvaleur.value == 0)
+                    {
+                        console.log("It’s over 9000!");
+                        alert("It’s over 9000!");
+                    }
+                    else
+                    {
+
+                        console.log(parseInt(Lvaleur.value)%parseInt(Rvaleur.value));
+                        alert(parseInt(Lvaleur.value)%parseInt(Rvaleur.value));
+                    }
+                }
+                else
+                    alert("Error :(");
             })
         </script>
     </body>
