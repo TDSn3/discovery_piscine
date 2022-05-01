@@ -52,14 +52,11 @@ for (0 ; document.cookie.split(";")[j]; j++)
 		newDiv.onclick = deleteTask;
 		var newDivTxt = document.createElement("h6");
 		newDiv.appendChild(newDivTxt);
-		newDivTxt.innerHTML = document.cookie.split(";")[j].split("=")[1];
+		newDivTxt.innerHTML = decodeURIComponent(document.cookie.split(";")[j].split("=")[1]).replaceAll(" ", "&nbsp");
 		ft_list.prepend(newDiv);
+		global.style.height = parseInt(findStyleGlobal.height.replace("px", "")) + 88 * j + "px";
+		ft_list.style.height = parseInt(findStyleList.height.replace("px", "")) + 88 * j + "px";
 	}
-}
-if (j > 1) 
-{
-	global.style.height = parseInt(findStyleGlobal.height.replace(/px/,"")) + (88 * (j - 2)) + "px";
-	ft_list.style.height = parseInt(findStyleList.height.replace(/px/,"")) + (88 * (j - 2)) + "px";
 }
 
 function deleteTask() 
@@ -70,8 +67,8 @@ function deleteTask()
 		ft_list.removeChild(this);
 		if (ft_list.childNodes.length > 1) 
 		{
-			global.style.height = parseInt(findStyleGlobal.height.replace(/px/,"")) - 88 + "px";
-			ft_list.style.height = parseInt(findStyleList.height.replace(/px/,"")) - 88 + "px";
+			global.style.height = parseInt(findStyleGlobal.height.replace("px", "")) - 88 + "px";
+			ft_list.style.height = parseInt(findStyleList.height.replace("px", "")) - 88 + "px";
 		}
 		document.cookie = this.id + "=" + this + "; expires = Thu, 01 Jan 1970 00:00:00 UTC";
 	}
@@ -84,20 +81,20 @@ butonNew.addEventListener("click", function()
 	{
 		if (ft_list.childNodes.length > 1) 
 		{
-			global.style.height = parseInt(findStyleGlobal.height.replace(/px/,"")) + 88 + "px";
-			ft_list.style.height = parseInt(findStyleList.height.replace(/px/,"")) + 88 + "px";
+			global.style.height = parseInt(findStyleGlobal.height.replace("px", "")) + 88 + "px";
+			ft_list.style.height = parseInt(findStyleList.height.replace("px", "")) + 88 + "px";
 		}
 
 		console.log("Click on button New");
 		var newDiv = document.createElement("div");
 		newDiv.className = "task";
-		newDiv.id = parseInt(stockNumChr().replace(/ /,""));
+		newDiv.id = parseInt(stockNumChr().replace(" ", ""));
 		newDiv.onclick = deleteTask;
 		var newDivTxt = document.createElement("h6");
 		newDiv.appendChild(newDivTxt);
-		newDivTxt.innerHTML = txt;
-		addCookie(parseInt(stockNumChr().replace(/ /,"")), txt);
+		newDivTxt.innerHTML = txt.replaceAll(" ", "&nbsp");
+		addCookie(parseInt(stockNumChr().replace(" ", "")), encodeURIComponent(txt));
 		ft_list.prepend(newDiv);
-		document.cookie = "stockNum" + "=" + (parseInt(stockNumChr().replace(/ /,"")) + 1) + "; expires = 01 Jan 3000 00:00:00 UTC";
+		document.cookie = "stockNum" + "=" + (parseInt(stockNumChr().replace(" ", "")) + 1) + "; expires = 01 Jan 3000 00:00:00 UTC";
 	}
 })
